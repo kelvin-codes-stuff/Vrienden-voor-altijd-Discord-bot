@@ -14,7 +14,9 @@ async def on_ready():
 
 
 bot.load_extension("cogs.voice")
+bot.load_extension("cogs.help")
 
 
 if __name__ == "__main__":
     bot.run(Env.TOKEN)
+    
