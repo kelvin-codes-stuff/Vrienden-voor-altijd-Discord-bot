@@ -2,7 +2,6 @@ import disnake
 from disnake.ext import commands
 from env import *
 
-
 intents = disnake.Intents.all()
 bot = commands.Bot(intents=intents)
 
@@ -15,6 +14,8 @@ async def on_ready():
 
 bot.load_extension("cogs.voice")
 bot.load_extension("cogs.help")
+bot.load_extension("cogs.welcome_leave")
+bot.load_extension("cogs.other")
 
 
 if __name__ == "__main__":
