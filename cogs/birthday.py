@@ -14,17 +14,14 @@ class birthday(commands.Cog):
     def __init__(self, bot: commands.Bot):
 
 
-
         self.bot = bot
         print("Cog Birthday is loaded!")
-
 
 
         # Main birthday command
         @bot.slash_command()
         async def verjaardag(inter):
             pass
-
 
         
         # Adding birthday command
@@ -57,7 +54,6 @@ class birthday(commands.Cog):
                     await inter.response.send_message(f"Oepsiedoepsie, er ging wat mis!", ephemeral=True)
 
 
-
         # Removing birthday command
         @commands.cooldown(1, 10.0, commands.BucketType.member)
         @verjaardag.sub_command(description="Verwijder je verjaardag uit Adje!")
@@ -69,7 +65,6 @@ class birthday(commands.Cog):
                 await inter.response.send_message(f"Ik kon geen verjaardag vinden helaas!", ephemeral=True)
             
 
-            
         # Cooldown message
         @verjaardag.error
         @verwijderen.error
@@ -81,7 +76,6 @@ class birthday(commands.Cog):
                 )
 
         
-
         # Functions
         def birthday_add(inter, day, month, year):
             # F
@@ -104,7 +98,6 @@ class birthday(commands.Cog):
                 print(f"DEBUG birthday funtion 'birthday_add', error: {error}")
         
 
-
         def birthday_remove(id):
             try:
                 Database.cursor.execute(f"SELECT * FROM birthday_users WHERE user_id = {id}")
@@ -116,8 +109,6 @@ class birthday(commands.Cog):
 
             except Exception as error:
                 print(f"DEBUG birthday funtion 'birthday_remove', error: {error}")
-
-
 
         async def birthday_send_embed(id, age):
             try:
@@ -133,7 +124,6 @@ class birthday(commands.Cog):
             except Exception as error:
                 print(error)
                 pass
-
 
 
         # Birthday loop to check date
@@ -167,9 +157,6 @@ class birthday(commands.Cog):
                 bd_counter[0] = 0
             
         birthday_date_checkert.start()
-
-
-
 
 
 def setup(bot: commands.Bot):
