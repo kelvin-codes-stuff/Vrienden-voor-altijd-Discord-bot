@@ -16,6 +16,7 @@ bot.load_extension("cogs.voice")
 bot.load_extension("cogs.help")
 bot.load_extension("cogs.welcome_leave")
 bot.load_extension("cogs.other")
+bot.load_extension("cogs.birthday")
 
 
 if __name__ == "__main__":

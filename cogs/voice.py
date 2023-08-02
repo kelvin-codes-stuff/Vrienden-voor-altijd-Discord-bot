@@ -19,6 +19,11 @@ class Voice(commands.Cog):
 
     @voice.sub_command(description="versleep een lid naar een ander voice kanaal")
     async def versleep(self, inter, gebruiker: disnake.Member, kanaal=commands.Param(choices={"Lounge": "lounge", "Bezig": "bezig", "AFK": "afk"})):
+        # Checks if user in VC, otherwise show error to user
+        if gebruiker.voice == None:
+            await inter.response.send_message("Je kunt niet iemand verplaatsen die niet in een voicechat zit!", ephemeral=True)
+            return 
+        
         if kanaal == "lounge":
             channel = self.bot.get_channel(Env.VC_LOUNGE_ID)
         elif kanaal == "bezig":
@@ -28,7 +33,7 @@ class Voice(commands.Cog):
 
         await gebruiker.edit(voice_channel=channel)
 
-        await inter.response.send_message(f"Gebruiker `{gebruiker.name}` is naar `{channel.name}` verplaatst",ephemeral=True)
+        await inter.response.send_message(f"Gebruiker `{gebruiker.name}` is naar `{channel.name}` verplaatst", ephemeral=True)
 
         
 def setup(bot: commands.Bot):
